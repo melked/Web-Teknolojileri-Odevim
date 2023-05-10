@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+        <title>Şehrim</title>
+    </head>
+    <body>
+<h1>Karabük</h1>
+</head>
+<body>
+
+<div id="parent-container">
+  <div class="navigation-buttons">
+    <div class="previous nav-btn"><</div>
+    <div class="next nav-btn">></div>
+  </div>
+
+  <div class="slider-carousel">
+    <div class="images main">
+      <a href="https://karabuk.csb.gov.tr/ilimiz-hakkinda-i-3786" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/20180107_Safranbolu_1945_%2839101010504%29.jpg/1200px-20180107_Safranbolu_1945_%2839101010504%29.jpg" alt="foto 1" />
+    </a>
+      <div class="image-text">Karabük Hakkında genel bilgiler</div>
+    </div>
+    <div class="images">
+      <a href="https://blog.biletbayi.com/karabukte-gezilecek-yerler.html/" target="_blank">
+      <img src="https://i4.hurimg.com/i/hurriyet/75/1110x740/5b0d1aa58f1ed81ccc505ee0.jpg" alt="foto 2" />
+    </a>
+      <div class="image-text">Karabük gezilecek yerler</div>
+    </div>
+    <div class="images main">
+      <a href="https://www.gezinomi.com/gezi-rehberi/karabuk-un-mutlaka-denemeniz-gereken-unlu-yemekler-ve-restoranlari.html#:~:text=Karab%C3%BCk%20iline%20%C3%B6zg%C3%BC%20y%C3%B6resel%20yemekler,ve%20Safranl%C4%B1%20Pilav%20yer%20almaktad%C4%B1r."target="_blank">
+      <img src="https://www.imrenlokumlari.com/upload/2020/11/karisik-lokum-2-cesit-2_500_332.jpg" alt="foto 3" />
+    </a>
+      <div class="image-text">karabük'de ne yenir</div>
+    </div>
+    <div class="images">
+      <a href="http://www.karabuk.gov.tr/karabukte-yasam" target="_blank">
+      <img src="https://img-s1.onedio.com/id-54c613c94482f4050a818f56/rev-0/raw/s-836b20ea3f13fa899d3415094d5392add0bdfd6e.jpg" alt="foto 4" />
+    </a>
+      <div class="image-text">Karabük'de sosyal yaşam</div>
+    </div>
+  </div>
+</div>
+<script>
+  // Slider için gerekli JavaScript kodu
+  var currentImage = 0;
+  var images = document.getElementsByClassName('images');
+
+  function showImage(index) {
+    // Tüm fotoğrafları gizle
+    for (var i = 0; i < images.length; i++) {
+      images[i].style.display = 'none';
+    }
+
+    // Geçerli fotoğrafı göster
+    images[index].style.display = 'block';
+    currentImage = index;
+  }
+
+  function nextImage() {
+    var nextIndex = currentImage + 1;
+    if (nextIndex >= images.length) {
+      nextIndex = 0;
+    }
+    showImage(nextIndex);
+  }
+
+  function previousImage() {
+    var previousIndex = currentImage - 1;
+    if (previousIndex < 0) {
+      previousIndex = images.length - 1;
+    }
+    showImage(previousIndex);
+  }
+
+  // İlk fotoğrafı göster
+  showImage(currentImage);
+
+  // Geçiş düğmelerine tıklama olaylarını dinle
+  var nextButton = document.querySelector('.next');
+  nextButton.addEventListener('click', nextImage);
+
+  var previousButton = document.querySelector('.previous');
+  previousButton.addEventListener('click', previousImage);
+</script>
+    </body>
+   
+</html>
