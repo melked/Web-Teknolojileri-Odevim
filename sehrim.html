@@ -44,48 +44,7 @@
     </div>
   </div>
 </div>
-<script>
-  // Slider için gerekli JavaScript kodu
-  var currentImage = 0;
-  var images = document.getElementsByClassName('images');
 
-  function showImage(index) {
-    // Tüm fotoğrafları gizle
-    for (var i = 0; i < images.length; i++) {
-      images[i].style.display = 'none';
-    }
-
-    // Geçerli fotoğrafı göster
-    images[index].style.display = 'block';
-    currentImage = index;
-  }
-
-  function nextImage() {
-    var nextIndex = currentImage + 1;
-    if (nextIndex >= images.length) {
-      nextIndex = 0;
-    }
-    showImage(nextIndex);
-  }
-
-  function previousImage() {
-    var previousIndex = currentImage - 1;
-    if (previousIndex < 0) {
-      previousIndex = images.length - 1;
-    }
-    showImage(previousIndex);
-  }
-
-  // İlk fotoğrafı göster
-  showImage(currentImage);
-
-  // Geçiş düğmelerine tıklama olaylarını dinle
-  var nextButton = document.querySelector('.next');
-  nextButton.addEventListener('click', nextImage);
-
-  var previousButton = document.querySelector('.previous');
-  previousButton.addEventListener('click', previousImage);
-</script>
     </body>
    
 </html>
