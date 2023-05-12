@@ -13,58 +13,21 @@
 
 <nav>
     <ul>
-        <li><a href="hakkimda.html" href="#">Hakkımda</a></li>
+        <li><a href="hakkimda.html" href="#"class="active">Hakkımda</a></li>
         <li><a href="ozgecmisim.html" href="#">Özgeçmişim</a></li>
         <li><a href="ilgialanlarim.html" href="#">İlgi Alanlarım</a></li>
         <li><a href="sehrim.html" href="#">Şehrim</a></li>
         <li><a href="mirasimiz.html" href="#">Mirasımız</a></li>
         <li><a href="login.html" href="#">Giriş Yap</a></li>
         <li><a href="iletisim.html" href="#">İletişim</a></li>
-    </ul>
+        <button class="previous">Önceki</button>
+        <button class="next">Sonraki</button>
+        <script src="script.js"></script>
+      </ul>
     
 </nav>
-<script>
-    // Slider için gerekli JavaScript kodu
-    var currentImage = 0;
-    var images = document.getElementsByClassName('images');
-  
-    function showImage(index) {
-      // Tüm fotoğrafları gizle
-      for (var i = 0; i < images.length; i++) {
-        images[i].style.display = 'none';
-      }
-  
-      // Geçerli fotoğrafı göster
-      images[index].style.display = 'block';
-      currentImage = index;
-    }
-  
-    function nextImage() {
-      var nextIndex = currentImage + 1;
-      if (nextIndex >= images.length) {
-        nextIndex = 0;
-      }
-      showImage(nextIndex);
-    }
-  
-    function previousImage() {
-      var previousIndex = currentImage - 1;
-      if (previousIndex < 0) {
-        previousIndex = images.length - 1;
-      }
-      showImage(previousIndex);
-    }
-  
-    // İlk fotoğrafı göster
-    showImage(currentImage);
-  
-    // Geçiş düğmelerine tıklama olaylarını dinle
-    var nextButton = document.querySelector('.next');
-    nextButton.addEventListener('click', nextImage);
-  
-    var previousButton = document.querySelector('.previous');
-    previousButton.addEventListener('click', previousImage);
-  </script> 
+
+
         
        
        
