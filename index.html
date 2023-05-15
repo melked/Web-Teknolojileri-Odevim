@@ -11,22 +11,54 @@
     <body>
         
 
-<nav>
-    <ul>
-        <li><a href="hakkimda.html" href="#"class="active">Hakkımda</a></li>
-        <li><a href="ozgecmisim.html" href="#">Özgeçmişim</a></li>
-        <li><a href="ilgialanlarim.html" href="#">İlgi Alanlarım</a></li>
-        <li><a href="sehrim.html" href="#">Şehrim</a></li>
-        <li><a href="mirasimiz.html" href="#">Mirasımız</a></li>
-        <li><a href="login.html" href="#">Giriş Yap</a></li>
-        <li><a href="iletisim.html" href="#">İletişim</a></li>
-        <button class="previous">Önceki</button>
-        <button class="next">Sonraki</button>
-
-      </ul>
-    
-</nav>
-
+        <nav>
+            <ul>
+              <li><a href="hakkimda.html" class="active">Hakkımda</a></li>
+              <li><a href="ozgecmisim.html">Özgeçmişim</a></li>
+              <li><a href="ilgialanlarim.html">İlgi Alanlarım</a></li>
+              <li><a href="sehrim.html">Şehrim</a></li>
+              <li><a href="mirasimiz.html">Mirasımız</a></li>
+              <li><a href="login.html">Giriş Yap</a></li>
+              <li><a href="iletisim.html">İletişim</a></li>
+              <li><button class="previous">Önceki</button></li>
+              <li><button class="next">Sonraki</button></li>
+            </ul>
+          </nav>
+          
+          <script>
+            var slideIndex = 0;
+            var slides = document.querySelectorAll('.images');
+            var prevButton = document.querySelector('.previous');
+            var nextButton = document.querySelector('.next');
+          
+            function showSlide(index) {
+              for (var i = 0; i < slides.length; i++) {
+                slides[i].style.transform = 'translateX(' + (index * -100) + '%)';
+              }
+              slideIndex = index;
+            }
+          
+            function nextSlide() {
+              slideIndex++;
+              if (slideIndex >= slides.length) {
+                slideIndex = 0;
+              }
+              showSlide(slideIndex);
+            }
+          
+            function previousSlide() {
+              slideIndex--;
+              if (slideIndex < 0) {
+                slideIndex = slides.length - 1;
+              }
+              showSlide(slideIndex);
+            }
+          
+            showSlide(slideIndex);
+          
+            nextButton.addEventListener('click', nextSlide);
+            prevButton.addEventListener('click', previousSlide);
+          </script>
 
         
        
