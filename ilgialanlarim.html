@@ -1,12 +1,43 @@
-<nav>
-    <ul>
-      <li><a href="hakkimda.html" class="active">Hakkımda</a></li>
-      <li><a href="ozgecmisim.html">Özgeçmişim</a></li>
-      <li><a href="ilgialanlarim.html">İlgi Alanlarım</a></li>
-      <li><a href="sehrim.html">Şehrim</a></li>
-      <li><a href="mirasimiz.html">Mirasımız</a></li>
-      <li><a href="login.html">Giriş Yap</a></li>
-      <li><a href="iletisim.html">İletişim</a></li>
-     
-    </ul>
-  </nav>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>İlgi Alanlarım</title>
+</head>
+<body>
+  <h1>İlgi Alanlarım</h1>
+  
+  <div id="interests"></div>
+
+  <script>
+  const API_URL = "https://api.themoviedb.org/3/movie/{movie_id}?api_key=7e11de5696328d26ef6e2da8d7ac74e6";
+const IMG_PATH = "https://www.themoviedb.org/t/p/w1280";
+const interestsDiv = document.getElementById('interests');
+const movieId =  44214; // Örnek olarak "The Dark Knight" filmi için TMDB'de atanmış bir film ID'si
+
+async function getMovieDetails() {
+  const res = await fetch(API_URL.replace("{movie_id}", movieId));
+  const data = await res.json();
+
+  // Film verilerini işleyin ve gösterin
+  const movieDiv = document.createElement('div');
+  const titleHeading = document.createElement('h2');
+  const descriptionParagraph = document.createElement('p');
+  const posterImage = document.createElement('img');
+
+  titleHeading.textContent = data.title;
+  descriptionParagraph.textContent = data.overview;
+  posterImage.src = IMG_PATH + data.poster_path;
+
+  movieDiv.appendChild(titleHeading);
+  movieDiv.appendChild(descriptionParagraph);
+  movieDiv.appendChild(posterImage);
+  interestsDiv.appendChild(movieDiv);
+}
+
+// İlk başta film verilerini alın
+getMovieDetails();
+
+  </script>
+</body>
+</html>

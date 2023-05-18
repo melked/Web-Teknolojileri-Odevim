@@ -43,4 +43,6 @@ window.addEventListener("DOMContentLoaded", function() {
       menuLinks[i].classList.add("active");
     }
   }
-});
+
+
+})

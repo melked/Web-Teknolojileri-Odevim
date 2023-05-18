@@ -15,4 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Invalid username or password. Please try again.";
   }
 }
+if ($loginSuccessful) {
+  header("Location: home.php");
+  exit; // Make sure to exit after the redirect
+} else {
+  // Handle login failure
+}
+
 ?>
