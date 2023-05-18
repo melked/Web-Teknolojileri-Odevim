@@ -31,3 +31,16 @@ nextButton.addEventListener('click', nextSlide);
 
 // İlk slaytı göster
 showSlide(slideIndex);
+
+
+window.addEventListener("DOMContentLoaded", function() {
+  var currentUrl = window.location.pathname;
+  var menuLinks = document.querySelectorAll("nav ul li a");
+
+  for (var i = 0; i < menuLinks.length; i++) {
+    var linkUrl = menuLinks[i].getAttribute("href");
+    if (currentUrl === linkUrl) {
+      menuLinks[i].classList.add("active");
+    }
+  }
+});

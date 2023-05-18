@@ -50,3 +50,72 @@
   cursor: pointer;
   user-select: none;
 }
+
+.jumbotron {
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+
+.jumbotron h4 {
+  color: gray;
+  font-size: 24px;
+}
+
+
+.custom-jumbotron {
+  padding: 10px;
+  color: gray;
+}
+
+.custom-h1 {
+  font-size: 24px;
+}
+
+.text-primary h2{
+  color:black;
+}
+
+.container {
+  text-align: center;
+}
+
+.image {
+  margin-bottom: 10px;
+}
+.resim {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.hakkımda {
+  display: flex;
+  
+}
+
+.hakkımda {
+  background-color: #f1f1f1;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 50%;
+}
+
+
+
+.foto {
+  display: flex;
+  
+}
+
+.foto img {
+  max-width: 50%;
+  height: auto;
+}
+
+.açıklama {
+  background-color: #f1f1f1;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 50%;
+}
