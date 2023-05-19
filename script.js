@@ -46,3 +46,44 @@ window.addEventListener("DOMContentLoaded", function() {
 
 
 })
+function validateForm() {
+  var nameInput = document.getElementById('name');
+  var emailInput = document.getElementById('email');
+  var messageInput = document.getElementById('message');
+
+  var name = nameInput.value;
+  var email = emailInput.value;
+  var message = messageInput.value;
+
+  if (name === '' || email === '' || message === '') {
+    alert('Lütfen tüm alanları doldurun');
+    return false;
+  }
+
+  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    alert('Geçerli bir e-posta adresi girin');
+    return false;
+  }
+
+  // Doğru giriş durumunda başka bir sayfaya yönlendirme
+  if (email === 'dogru@mail.com') {
+    window.location.href = 'dogru.html';
+    return false;
+  }
+
+  // Yanlış giriş durumunda mesaj gösterme
+  if (email === 'yanlis@mail.com') {
+    var errorMessage = document.getElementById('errorMessage');
+    errorMessage.innerHTML = 'Hatalı giriş yaptınız';
+    return false;
+  }
+
+  return true;
+}
+
+function clearForm() {
+  document.getElementById('name').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('message').value = '';
+}

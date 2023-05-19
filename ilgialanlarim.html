@@ -3,6 +3,7 @@
 <html>
 <head>
   <title>İlgi Alanlarım</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>İlgi Alanlarım</h1>
@@ -13,13 +14,12 @@
   const API_URL = "https://api.themoviedb.org/3/movie/{movie_id}?api_key=7e11de5696328d26ef6e2da8d7ac74e6";
 const IMG_PATH = "https://www.themoviedb.org/t/p/w1280";
 const interestsDiv = document.getElementById('interests');
-const movieId =  44214; // Örnek olarak "The Dark Knight" filmi için TMDB'de atanmış bir film ID'si
-
+const movieId =  44214;
 async function getMovieDetails() {
   const res = await fetch(API_URL.replace("{movie_id}", movieId));
   const data = await res.json();
 
-  // Film verilerini işleyin ve gösterin
+
   const movieDiv = document.createElement('div');
   const titleHeading = document.createElement('h2');
   const descriptionParagraph = document.createElement('p');
@@ -35,7 +35,7 @@ async function getMovieDetails() {
   interestsDiv.appendChild(movieDiv);
 }
 
-// İlk başta film verilerini alın
+
 getMovieDetails();
 
   </script>
