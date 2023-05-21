@@ -1,3 +1,79 @@
+
+
+.hakkımda {
+  text-align: center;
+  background-color: lightgray;
+}
+
+
+.hobbies-container {
+  text-align: center;
+}
+
+.hobbies {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.hobbies > div {
+  flex: 0 0 auto;
+  text-align: center;
+  margin: 20px 10px 0; /* Yukarıdan 20px, sağdan ve soldan 10px boşluk */
+  scroll-snap-align: center;
+}
+
+.hobbies .love-image {
+  border-radius: 50%;
+}
+.foto {
+  text-align: center;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.ozgecmis {
+  text-align: center;
+  margin-top: 10px;
+}
+.jumbotron {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.jumbotron h4 {
+  font-size: 20px;
+  color: #333;
+  text-align: center;
+}
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #f5f5f5;
+}
+
+.footer-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
 #parent-container {
   max-width: 800px;
   margin: 0 auto;
@@ -50,125 +126,128 @@
   cursor: pointer;
   user-select: none;
 }
-
-.jumbotron {
-  padding: 8px;
-  margin-bottom: 10px;
-}
-
-
-.jumbotron h4 {
-  color: gray;
-  font-size: 24px;
-}
-
-
-.custom-jumbotron {
-  padding: 10px;
-  color: gray;
-}
-
-.custom-h1 {
-  font-size: 24px;
-}
-
-.text-primary h2{
-  color:black;
-}
-
 .container {
-  text-align: center;
-}
-
-.image {
-  margin-bottom: 10px;
-}
-.resim {
   display: flex;
-  align-items: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.hakkımda {
-  display: flex;
-  
+.row {
+  width: 100%;
 }
 
-.hakkımda {
-  background-color: #f1f1f1;
-  padding: 10px;
+.col {
+  flex-basis: 100%;
   margin-bottom: 20px;
-  width: 50%;
 }
-
-
-
-.foto {
-  display: flex;
-  
-}
-
-.foto img {
-  max-width: 50%;
+img {
+  max-width: 60%;
   height: auto;
 }
-
-.açıklama {
-  background-color: #f1f1f1;
-  padding: 10px;
-  margin-bottom: 10px;
-  width: 50%;
+.movie-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-
-
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 20px;
+.movie-card img {
+  margin-right: 10px;
 }
 
-h1 {
-  text-align: center;
+.movie-card h2 {
+  margin-bottom: 5px;
+}
+.btn-small {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
+.form-group {
+  margin-bottom: 20px;
 }
 
-form {
-  max-width: 400px;
-  margin: 20px auto;
+.form-label {
+  font-weight: bold;
 }
 
-label {
-  display: block;
-  margin-top: 10px;
-}
-
-input[type="text"],
-input[type="email"],
-textarea {
+.form-input {
   width: 100%;
   padding: 5px;
-  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
-button[type="submit"] {
-  display: block;
+.form-select {
   width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  background-color: #4CAF50;
-  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-textarea {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-button {
+  padding: 10px 20px;
+  border-radius: 5px;
   border: none;
+  background-color: #007bff;
+  color: #fff;
   cursor: pointer;
 }
-.clear-button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer
-  text
+
+.form-button:hover {
+  background-color: #0069d9;
 }
 
+.form-clear-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #007bff;
+  background-color: #fff;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.form-clear-button:hover {
+  background-color: #f1f1f1;
+}
+
+#submittedData {
+  display: none;
+  margin-top: 30px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+#submittedData h2 {
+  margin-top: 0;
+}
+
+@media (min-width: 576px) {
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-label {
+    margin-bottom: 5px;
+  }
+  
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: auto;
+  }
+  
+  .form-button,
+  .form-clear-button {
+    width: auto;
+  }
+}
