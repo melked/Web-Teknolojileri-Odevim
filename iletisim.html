@@ -51,7 +51,7 @@
     </div>
     <div class="form-group">
       <label for="phone">Telefon:</label>
-      <input type="tel" class="form-control" id="phone" placeholder="Telefon numaranızı girin" required>
+      <input type="tel" class="form-control" id="phone" placeholder="Telefon numaranızı girin" pattern="[0-9]{11}" required>
     </div>
     <div class="form-group">
       <label for="gender">Cinsiyet:</label>
@@ -73,65 +73,76 @@
   <script>
     function clearForm() {
       document.getElementById('ContactForm').reset();
-    }
-    
-    function showErrorMessage(message) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Hata!',
-        text: message,
-      });
-    }
-    
-    document.getElementById('ContactForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-    
-      var name = document.getElementById('name').value;
-      var email = document.getElementById('email').value;
-      var phone = document.getElementById('phone').value;
-      var gender = document.getElementById('gender').value;
-      var message = document.getElementById('message').value;
-    
-      if (!name || !email || !phone || !gender || !message) {
-        showErrorMessage('Lütfen tüm alanları doldurun');
-        return;
-      }
-    
-      if (!isValidEmail(email)) {
-        showErrorMessage('Geçerli bir e-mail adresi girin');
-        return;
-      }
-    
-      // İletişim bilgilerini işleme koyma veya gösterme işlemleri burada yapılabilir
-    
-      // Örnek olarak, bilgileri göstermek için
-      var submittedData = {
-        name: name,
-        email: email,
-        phone: phone,
-        gender: gender,
-        message: message
-      };
-    
-      // Gönderilen verileri göstermek için bir div içinde görüntüleyebilirsiniz
-      var submittedDataDiv = document.getElementById('submittedData');
-      submittedDataDiv.innerHTML = '<h2>Gönderilen Bilgiler</h2>' +
-        '<p><strong>Ad:</strong> ' + submittedData.name + '</p>' +
-        '<p><strong>E-posta:</strong> ' + submittedData.email + '</p>' +
-        '<p><strong>Telefon:</strong> ' + submittedData.phone + '</p>' +
-        '<p><strong>Cinsiyet:</strong> ' + submittedData.gender + '</p>' +
-        '<p><strong>Mesaj:</strong> ' + submittedData.message + '</p>';
-    
-      submittedDataDiv.style.display = 'block';
-    
-      // Formu temizle
-      clearForm();
-    });
-    
-    function isValidEmail(email) {
-      // E-posta adresinin geçerli bir formatta olduğunu doğrulamak için burada gerekli doğrulama işlemleri yapılabilir
-      return /\S+@\S+\.\S+/.test(email);
-    }
+    }function showErrorMessage(message) {
+  Swal.fire({
+    icon: 'error',
+    title: 'Hata!',
+    text: message,
+  });
+}
+
+document.getElementById('ContactForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  var name = document.getElementById('name').value;
+  var email = document.getElementById('email').value;
+  var phone = document.getElementById('phone').value;
+  var gender = document.getElementById('gender').value;
+  var message = document.getElementById('message').value;
+
+  if (!name || !email || !phone || !gender || !message) {
+    showErrorMessage('Lütfen tüm alanları doldurun');
+    return;
+  }
+
+  if (!isValidEmail(email)) {
+    showErrorMessage('Geçerli bir e-posta adresi girin');
+    return;
+  }
+
+  if (!isValidPhone(phone)) {
+    showErrorMessage('Telefon numaranız 11 haneli olmalıdır');
+    return;
+  }
+
+  showSubmittedData(name, email, phone, gender, message);
+  clearForm();
+});
+
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function isValidPhone(phone) {
+  return /^\d{11}$/.test(phone);
+}
+function showSubmittedData(name, email, phone, gender, message) {
+  var submittedDataContainer = document.getElementById('submittedData');
+  submittedDataContainer.innerHTML = '';
+
+  var submittedName = document.createElement('p');
+  submittedName.textContent = 'Adınız: ' + name;
+  submittedDataContainer.appendChild(submittedName);
+
+  var submittedEmail = document.createElement('p');
+  submittedEmail.textContent = 'E-posta Adresiniz: ' + email;
+  submittedDataContainer.appendChild(submittedEmail);
+
+  var submittedPhone = document.createElement('p');
+  submittedPhone.textContent = 'Telefon Numaranız: ' + phone;
+  submittedDataContainer.appendChild(submittedPhone);
+
+  var submittedGender = document.createElement('p');
+  submittedGender.textContent = 'Cinsiyetiniz: ' + gender;
+  submittedDataContainer.appendChild(submittedGender);
+
+  var submittedMessage = document.createElement('p');
+  submittedMessage.textContent = 'Mesajınız: ' + message;
+  submittedDataContainer.appendChild(submittedMessage);
+
+  document.getElementById('ContactForm').style.display = 'none';
+  submittedDataContainer.style.display = 'block';
+}
   </script>
 </body>
 </html>
