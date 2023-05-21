@@ -6,9 +6,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
-  
-
-
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -42,112 +39,99 @@
       </ul>
     </div>
   </nav>
-      <body>
-        <h1>İletişim Sayfası</h1>
-      
-        <form id="contactForm">
-          <label for="name">Adınız:</label>
-          <input type="text" id="name" required>
-      
-          <label for="email">E-posta Adresiniz:</label>
-          <input type="email" id="email" required>
-      
-          <label for="phone">Telefon Numaranız:</label>
-          <input type="tel" id="phone" required>
-      
-          <label for="gender">Cinsiyetiniz:</label>
-          <select id="gender" required>
-            <option value="">Seçiniz</option>
-            <option value="erkek">Erkek</option>
-            <option value="kadın">Kadın</option>
-            <option value="diğer">Diğer</option>
-          </select>
-      
-          <label for="message">Mesajınız:</label>
-          <textarea id="message" required></textarea>
-      
-          <form id="contactForm">
-            <!-- Form alanları burada yer alır -->
-            
-            <button type="button" onclick="submitForm()">Gönder</button>
-            <button type="button" onclick="clearForm()">Temizle</button>
-          </form>
-          
-         
-        </form>
-      
-        <div id="submittedData" style="display: none;">
-          <h2>Gönderilen Bilgiler</h2>
-          <p>Adınız: <span id="submittedName"></span></p>
-          <p>E-posta Adresiniz: <span id="submittedEmail"></span></p>
-          <p>Telefon Numaranız: <span id="submittedPhone"></span></p>
-          <p>Cinsiyetiniz: <span id="submittedGender"></span></p>
-          <p>Mesajınız: <span id="submittedMessage"></span></p>
-        </div>
-      
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.js"></script>
-        <script>
-          function submitForm() {
-            // Form elemanlarını al
-            var name = document.getElementById('name').value;
-            var email = document.getElementById('email').value;
-            var phone = document.getElementById('phone').value;
-            var gender = document.getElementById('gender').value;
-            var message = document.getElementById('message').value;
-      
-            // Kontrolleri yap
-            if (!name || !email || !phone || !gender || !message) {
-              showErrorMessage('Lütfen tüm alanları doldurun');
-              return;
-            }
-      
-            if (!isValidEmail(email)) {
-              showErrorMessage('Geçerli bir e-posta adresi girin');
-              return;
-            }
-      
-            if (!isValidPhone(phone)) {
-              showErrorMessage('Telefon numaranız 11 haneli olmalıdır');
-              return;
-            }
-      
-            // Gönderilen form bilgilerini yeni sayfada göster
-            document.getElementById('submittedName').textContent = name;
-            document.getElementById('submittedEmail').textContent = email;
-            document.getElementById('submittedPhone').textContent = phone;
-            document.getElementById('submittedGender').textContent = gender;
-            document.getElementById('submittedMessage').textContent = message;
-      
-            // Yeni sayfayı göster
-            document.getElementById('contactForm').style.display = 'none';
-            document.getElementById('submittedData').style.display = 'block';
-          }
-      
-          function isValidEmail(email) {
-            // E-posta adresi geçerlilik kontrolünü yap
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-          }
-      
-          function isValidPhone(phone) {
-            // Telefon numarasının 11 haneli olup olmadığını kontrol et
-            return /^\d{11}$/.test(phone);
-          }
-      
-          function showErrorMessage(message) {
-            Swal.fire({
-              icon: 'error',
-              title: 'Hata!',
-              text: message,
-              confirmButtonText: 'Tamam'
-            });
-          }
-          function clearForm() {
-  document.getElementById('contactForm').reset();
-}
-
-        </script>
-      </body>
- 
-  
+  <div id="submittedData" style="display: none;"></div>
+  <form id="ContactForm">
+    <div class="form-group">
+      <label for="name">Ad:</label>
+      <input type="text" class="form-control" id="name" placeholder="Adınızı girin" required>
+    </div>
+    <div class="form-group">
+      <label for="email">E-posta:</label>
+      <input type="email" class="form-control" id="email" placeholder="E-posta adresinizi girin" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Telefon:</label>
+      <input type="tel" class="form-control" id="phone" placeholder="Telefon numaranızı girin" required>
+    </div>
+    <div class="form-group">
+      <label for="gender">Cinsiyet:</label>
+      <select class="form-control" id="gender" required>
+        <option value="">Cinsiyet seçin</option>
+        <option value="male">Erkek</option>
+        <option value="female">Kadın</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="message">Mesaj:</label>
+      <textarea class="form-control" id="message" placeholder="Mesajınızı girin" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Gönder</button>
+    <button type="button" class="btn btn-secondary" onclick="clearForm()">Temizle</button>
+  </form>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.js"></script>
+  <script>
+    function clearForm() {
+      document.getElementById('ContactForm').reset();
+    }
+    
+    function showErrorMessage(message) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Hata!',
+        text: message,
+      });
+    }
+    
+    document.getElementById('ContactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+    
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+      var phone = document.getElementById('phone').value;
+      var gender = document.getElementById('gender').value;
+      var message = document.getElementById('message').value;
+    
+      if (!name || !email || !phone || !gender || !message) {
+        showErrorMessage('Lütfen tüm alanları doldurun');
+        return;
+      }
+    
+      if (!isValidEmail(email)) {
+        showErrorMessage('Geçerli bir e-mail adresi girin');
+        return;
+      }
+    
+      // İletişim bilgilerini işleme koyma veya gösterme işlemleri burada yapılabilir
+    
+      // Örnek olarak, bilgileri göstermek için
+      var submittedData = {
+        name: name,
+        email: email,
+        phone: phone,
+        gender: gender,
+        message: message
+      };
+    
+      // Gönderilen verileri göstermek için bir div içinde görüntüleyebilirsiniz
+      var submittedDataDiv = document.getElementById('submittedData');
+      submittedDataDiv.innerHTML = '<h2>Gönderilen Bilgiler</h2>' +
+        '<p><strong>Ad:</strong> ' + submittedData.name + '</p>' +
+        '<p><strong>E-posta:</strong> ' + submittedData.email + '</p>' +
+        '<p><strong>Telefon:</strong> ' + submittedData.phone + '</p>' +
+        '<p><strong>Cinsiyet:</strong> ' + submittedData.gender + '</p>' +
+        '<p><strong>Mesaj:</strong> ' + submittedData.message + '</p>';
+    
+      submittedDataDiv.style.display = 'block';
+    
+      // Formu temizle
+      clearForm();
+    });
+    
+    function isValidEmail(email) {
+      // E-posta adresinin geçerli bir formatta olduğunu doğrulamak için burada gerekli doğrulama işlemleri yapılabilir
+      return /\S+@\S+\.\S+/.test(email);
+    }
+  </script>
 </body>
 </html>
